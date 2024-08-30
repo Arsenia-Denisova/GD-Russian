@@ -32,4 +32,4 @@ Additional files for the project include:
  1. 'xlerc' file used for more convenient work with the grammar code. It allows to call current code file and parse the testsuite file every time XLE is called within Terminal.
  2. '.gitignore' file that includes functional and hidden files generated from running the software and code.
 
-_Link to the Github repoitory:_ https://github.com/Arsenia-Denisova/GD-Project
+_Link to the Github repoitory:_ https://github.com/Arsenia-Denisova/GD-Russian
