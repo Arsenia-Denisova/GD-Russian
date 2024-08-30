@@ -12,7 +12,7 @@ proc relpath {path} {
 }
 
 #specify grammar
-set defaultParser [relpath base.lfg]
+set defaultParser [relpath code.lfg]
 
 #load parser
 create-parser $defaultParser
