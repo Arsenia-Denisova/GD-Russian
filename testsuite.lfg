@@ -1,0 +1,31 @@
+# 1 OVS order, "Cat saw a dog"
+
+Kot uvidel sobaku.
+
+# 2 external topic, "Cat, a dog saw it"
+
+Kot, sobaka ego uvidela.
+
+# 3 SOV order, "A dog eats bones"
+
+Sobaka kosti est.
+
+# 4 OSV order, "A dog eats bones"
+
+Kosti sobaka est.
+
+# 5 OVS order, "A dog eats bones"
+
+Kosti est sobaka.
+
+# 6 Incorrect, violation of Completeness condition. "eats bones"
+
+est kosti
+
+# 7 Incorrect, violation of Coherence condition in case. "Cat-Nom. saw a dog-Nom."
+
+kot uvidel sobaka
+
+# 8 Incorrect, violation of Coherence condition in gender. "Cat-Masc. saw-Fem. bones"
+
+kot uvidela kosti

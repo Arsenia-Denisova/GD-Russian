@@ -1,0 +1,167 @@
+DEMO  RUSSIAN    CONFIG (1.0)
+  ROOTCAT   S.
+  FILES  .
+  LEXENTRIES   (DEMO RUSSIAN).
+  TEMPLATES (DEMO RUSSIAN). 
+  RULES   (DEMO RUSSIAN).
+  GOVERNABLERELATIONS    SUBJ OBJ OBJ2 COMP XCOMP OBL OBL-?+.
+  SEMANTICFUNCTIONS    ADJUNCT  TOPIC FOCUS E-TOPIC POSS STANDARD.
+  NONDISTRIBUTIVES    NUM PERS CONJ-FORM.
+  EPSILON   e.
+  OPTIMALITYORDER NOGOOD +TOPIC FOCUS +pl.
+  CHARACTERENCODING utf-8. "encoding specification"
+  
+
+----
+
+DEMO   RUSSIAN   RULES (1.0)
+
+S -->   (NP: (^E-TOPIC)=!) "for external topic outside the clause"
+	{NP: (^ SUBJ)=! "SVO/SOV"
+      	  {(^TOPIC)=!
+	  @(OT-MARK TOPIC) "to prioritise more common structure"
+	  |(^FOCUS)=!}
+	  (!CASE)=Nom!;
+ 	 VP: ^=!
+	|NP: (^ OBJ)=! "OVS/OSV"
+      	  {(^TOPIC)=!
+	  @(OT-MARK TOPIC) "to prioritise more common structure"
+	  |(^FOCUS)=!}
+	  (!CASE)=Acc!;
+ 	VP: ^=!}
+	(PERIOD). "opitonal period at the end of a sentence"
+
+VP --> {V: ^=!; "SVO/OVS"
+       NP: {(^ OBJ)=!
+       	   |(^ SUBJ)=!}
+       	   {(^FOCUS)=!
+	   |(^TOPIC)=!}
+	   {(!CASE)=Acc!
+	   |(!CASE)=Nom!}
+	|NP: {(^ OBJ)=! "SOV/OSV"
+       	   |(^ SUBJ)=!}
+       	   {(^FOCUS)=!
+	   |(^TOPIC)=!}
+	    {(!CASE)=Acc!
+	   |(!CASE)=Nom!};
+	  V: ^=!
+	 |V: ^=! "SVO/OVS with focused verb"
+	   (^FOCUS)=!
+	   @(OT-MARK FOCUS); "negative OT-Mark in order to generate more common
+	   	     	     	       types of sentence intonations first"
+      	  NP: {(^ OBJ)=!
+       	   |(^ SUBJ)=!}
+	   {(!CASE)=Acc!
+	   |(!CASE)=Nom!}
+	 |NP: {(^ OBJ)=! "SOV/OSV with focused verb"
+       	   |(^ SUBJ)=!}
+	   {(!CASE)=Acc!
+	   |(!CASE)=Nom!};
+	  V: ^=!
+	  (^FOCUS)=!
+	   @(OT-MARK FOCUS)}. "negative OT-Mark with the same reason as above"
+
+
+NP --> {N
+	|PRON
+	|N "for external topic outside of the clause, separated by comma"
+	COMMA}.
+
+----
+
+DEMO   RUSSIAN   TEMPLATES (1.0)
+
+
+OT-MARK(_mark) = _mark $ o::*. "for OT-MARKS"
+
+
+----
+
+DEMO RUSSIAN LEXICON (1.0)
+
+"nouns"
+
+kot N * (^PRED) = 'cat'
+	    (^NUM) = sg
+	    (^PERS) = 3
+	    (^GEN) = masc
+	    (^CASE) = Nom.
+	    
+Kot N * (^PRED) = 'cat' "capital letter for beginning of a sentence"
+	    (^NUM) = sg
+	    (^PERS) = 3
+	    (^GEN) = masc
+	    (^CASE) = Nom.
+
+sobaka  N * (^PRED) = 'dog'
+	    (^NUM) = sg
+	    (^PERS) = 3
+	    (^GEN) = fem
+	    (^CASE) = Nom.
+	    
+Sobaka  N * (^PRED) = 'dog' "capital letter for beginning of a sentence"
+	    (^NUM) = sg
+	    (^PERS) = 3
+	    (^GEN) = fem
+	    (^CASE) = Nom.
+
+sobaku N * (^PRED) = 'dog'
+	    (^NUM) = sg
+	    (^PERS) = 3
+	    (^GEN) = fem
+	    (^CASE) = Acc.
+
+kosti N * (^PRED) = 'bones'
+      	  {(^NUM) = pl @(OT-MARK pl) "can be both forms, prefer plural"
+	  |(^NUM) = sg
+	   (^CASE) = dat}
+	    (^PERS) = 3.
+	    
+Kosti N * (^PRED) = 'bones' "capital letter for beginning of a sentence"
+      	  {(^NUM) = pl @(OT-MARK pl) "can be both forms, prefer plural"
+	  |(^NUM) = sg
+	   (^CASE) = dat}
+	    (^PERS) = 3.
+
+"pronouns"
+
+ego PRON  * (^PRED) = 'him'
+      	(^GEN) = masc
+	(^CASE) = Acc
+	(^NUM) = sg
+	(^PROM-TYPE) = pers
+	    (^PERS) = 3.
+
+"verbs"
+
+est V  * (^PRED) = 'eat<(^SUBJ)(^OBJ)>'
+	    (^SUBJ NUM) = sg
+	    (^SUBJ PERS) = 3
+	     (^SUBJ CASE) = Nom
+	    (^OBJ CASE) = Acc
+	    (^TENSE) = Pres.
+
+uvidel V  * (^PRED) = 'see<(^SUBJ)(^OBJ)>'
+	    (^SUBJ NUM) = sg
+	    (^SUBJ PERS) = 3
+	    (^SUBJ GEN) = masc
+	    (^SUBJ CASE) = Nom
+	    (^OBJ CASE) = Acc
+	    (^TENSE) = Past.
+
+uvidela V  * (^PRED) = 'see<(^SUBJ)(^OBJ)>'
+	    (^SUBJ NUM) = sg
+	    (^SUBJ PERS) = 3
+	    (^SUBJ GEN) = fem
+	    (^SUBJ CASE) = Nom
+	    (^OBJ CASE) = Acc
+	    (^TENSE) = Past.
+
+"punctuation"
+
+. PERIOD * .
+
+, COMMA  * .
+
+
+----
